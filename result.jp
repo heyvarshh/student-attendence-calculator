@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Attendance Result</title>
+    <style>
+        body {
+            font-family: Arial;
+            background: #e3f2fd;
+            text-align: center;
+            padding-top: 100px;
+        }
+        .box {
+            background: white;
+            padding: 30px;
+            display: inline-block;
+            border-radius: 15px;
+            box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        .green { color: #4CAF50; }
+        .red { color: #f44336; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h2>Your Attendance Percentage: <%= request.getAttribute("percentage") %>%</h2>
+
+        <%
+            double percentage = (double) request.getAttribute("percentage");
+            if (percentage >= 75) {
+        %>
+            <h3 class="green">✅ You are eligible for exams!</h3>
+        <% } else { %>
+            <h3 class="red">⚠️ Not eligible! Attend more classes.</h3>
+        <% } %>
+        <br>
+        <a href="index.jsp">Calculate Again</a>
+    </div>
+</body>
+</html>
